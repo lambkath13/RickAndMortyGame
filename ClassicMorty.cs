@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace RickAndMortyGame;
 
 public class ClassicMorty : MortyBase
@@ -10,8 +12,9 @@ public class ClassicMorty : MortyBase
         {
             var other = Enumerable.Range(0, totalBoxes)
                 .Where(i => i != rickChoice)
-                .OrderBy(_ => Guid.NewGuid())
+                .OrderBy(_ => RandomNumberGenerator.GetInt32(int.MaxValue))
                 .First();
+
             remaining.Add(other);
         }
         else

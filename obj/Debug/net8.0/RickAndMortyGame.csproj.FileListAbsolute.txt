@@ -18,3 +18,4 @@ C:\Users\user\RiderProjects\RickAndMortyGame\RickAndMortyGame\obj\Debug\net8.0\R
 C:\Users\user\RiderProjects\RickAndMortyGame\RickAndMortyGame\obj\Debug\net8.0\ref\RickAndMortyGame.dll
 C:\Users\user\RiderProjects\RickAndMortyGame\RickAndMortyGame\bin\Debug\net8.0\SHA3.Net.dll
 C:\Users\user\RiderProjects\RickAndMortyGame\RickAndMortyGame\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\user\RiderProjects\RickAndMortyGame\RickAndMortyGame\obj\Debug\net8.0\RickAndMortyGame.sourcelink.json

@@ -1,4 +1,3 @@
-using SHA3.Net;
 using System.Security.Cryptography;
 using System.Text;
 using Org.BouncyCastle.Crypto.Digests;
@@ -15,7 +14,7 @@ public static class RandomFairGenerator
         byte[] key = new byte[32]; 
         rng.GetBytes(key);
 
-        int mortyValue = RandomNumber(rng, range);
+        int mortyValue = RandomNumber(range);
 
         string hmac = ComputeHmacSha3(key, mortyValue.ToString());
         Console.WriteLine($"Morty: HMAC={hmac}");
@@ -31,17 +30,11 @@ public static class RandomFairGenerator
         return result;
     }
 
-    private static int RandomNumber(RandomNumberGenerator rng, int range)
+    private static int RandomNumber(int range)
     {
-        byte[] bytes = new byte[4];
-        int value;
-        do
-        {
-            rng.GetBytes(bytes);
-            value = BitConverter.ToInt32(bytes, 0) & int.MaxValue;
-        } while (value >= (int.MaxValue / range) * range);
-        return value % range;
+        return RandomNumberGenerator.GetInt32(range);
     }
+
 
     private static string ComputeHmacSha3(byte[] key, string message)
     {
@@ -54,8 +47,9 @@ public static class RandomFairGenerator
         byte[] result = new byte[hmac.GetMacSize()];
         hmac.DoFinal(result, 0);
 
-        return BitConverter.ToString(result).Replace("-", "");
+        return Convert.ToHexString(result);
     }
+
     private static int ReadInt(int min, int max)
     {
         while (true)
